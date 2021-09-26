@@ -8,4 +8,10 @@ export const StyleProvider = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Source Sans Pro', sans-serif;
   }
+  h2 {
+    font-size: 17px;
+  }
+  p {
+    font-size: 14px;
+  }
 `;

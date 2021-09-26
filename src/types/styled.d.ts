@@ -11,13 +11,14 @@ enum BreakpointKeys {
 declare module 'styled-components' {
   export interface DefaultTheme {
     palette: {
+      white: string;
       black: string;
       dark: string;
       light: string;
       emphasis: string;
     };
     spacing: {
-      gutter: number;
+      gutter: string;
     };
     breakpoints: { [key in BreakpointKeys]: string };
   }

@@ -2,13 +2,14 @@ import { DefaultTheme } from 'styled-components';
 
 const defaultTheme: DefaultTheme = {
   palette: {
+    white: '#ffffff',
     black: '#121212',
     dark: '#333333',
     light: '#828282',
     emphasis: '#EC5757',
   },
   spacing: {
-    gutter: 16,
+    gutter: '16px',
   },
   breakpoints: {
     xs: '0px',
