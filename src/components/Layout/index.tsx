@@ -1,11 +1,16 @@
 import React from 'react';
+import { LayoutProps } from 'types/components';
+import { Container, Header } from 'components/Layout/styles';
 
-type Props = {
-  children: React.ReactNode;
-};
-
-const Layout = ({ children }: Props): React.ReactElement => {
-  return <div>{children}</div>;
+const Layout = ({ children }: LayoutProps): React.ReactElement => {
+  return (
+    <Container>
+      <Header>
+        <h2>Ravn Star Wars Registry</h2>
+      </Header>
+      <div>{children}</div>
+    </Container>
+  );
 };
 
 export default Layout;
