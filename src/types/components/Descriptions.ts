@@ -6,6 +6,6 @@ export type DescriptionsProps = {
 };
 
 export type DescriptionsItemProps = {
-  label: string;
-  children?: string;
+  label: string | null;
+  children?: string | null;
 };
