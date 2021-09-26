@@ -1,0 +1,15 @@
+overwrite: true
+schema:
+  - ${REACT_APP_GRAPHQL_SERVER}
+documents:
+  - 'src/apollo/queries/**/*.graphql'
+  - 'src/apollo/mutations/**/*.graphql'
+generates:
+  src/apollo/generated/graphql.tsx:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      withHooks: true
+      avoidOptionals: true
