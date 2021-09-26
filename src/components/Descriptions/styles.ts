@@ -7,6 +7,7 @@ export const Container = styled.div`
 export const HeadingWrapper = styled.div`
   padding: ${({ theme }): string => theme.spacing.gutter};
   padding-top: ${({ theme }): string => `calc(${theme.spacing.gutter} * 2)`};
+  padding-bottom: ${({ theme }): string => `calc(${theme.spacing.gutter} / 2)`};
   h2 {
     color: ${({ theme }): string => theme.palette.dark};
   }

@@ -6,9 +6,14 @@ import {
   HeadingWrapper,
 } from 'components/Card/styles';
 
-const Card = ({ heading, blurb, extra }: CardProps): React.ReactElement => {
+const Card = ({
+  heading,
+  blurb,
+  extra,
+  onClick,
+}: CardProps): React.ReactElement => {
   return (
-    <Container className="card-container">
+    <Container className="card-container" onClick={onClick}>
       <HeadingWrapper>
         <h2 className="card-container__heading">{heading}</h2>
         <p className="card-container__blurb">{blurb}</p>

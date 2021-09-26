@@ -4,4 +4,5 @@ export type CardProps = {
   heading: string;
   blurb: string;
   extra?: React.ReactNode;
+  onClick?: () => void;
 };
