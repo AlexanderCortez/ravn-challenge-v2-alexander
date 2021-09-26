@@ -120,14 +120,18 @@ const AllPeople = ({ loading, error }: Props): JSX.Element => {
                     {currentPerson?.birthYear}
                   </Descriptions.Item>
                 </Descriptions>
-                <Descriptions title="Vehicles">
-                  {currentPerson.vehicleConnection?.vehicles?.map((vehicle) => (
-                    <Descriptions.Item
-                      key={vehicle?.id}
-                      label={vehicle?.name || ''}
-                    />
-                  ))}
-                </Descriptions>
+                {!!currentPerson.vehicleConnection?.vehicles.length && (
+                  <Descriptions title="Vehicles">
+                    {currentPerson.vehicleConnection?.vehicles?.map(
+                      (vehicle) => (
+                        <Descriptions.Item
+                          key={vehicle?.id}
+                          label={vehicle?.name || ''}
+                        />
+                      ),
+                    )}
+                  </Descriptions>
+                )}
               </>
             )}
           </DetailsWrapper>
