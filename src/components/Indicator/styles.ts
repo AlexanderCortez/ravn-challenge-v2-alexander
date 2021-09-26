@@ -4,6 +4,7 @@ export const Container = styled.div`
   padding: ${({ theme }): string => theme.spacing.gutter};
   display: flex;
   justify-content: center;
+  align-items: center;
 
   .indicator-container__error {
     color: ${({ theme }): string => theme.palette.emphasis};

@@ -7,5 +7,5 @@ export type DescriptionsProps = {
 
 export type DescriptionsItemProps = {
   label: string;
-  children: string;
+  children?: string;
 };
