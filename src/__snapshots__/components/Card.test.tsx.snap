@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component should match snapshot 1`] = `
+<styled.div>
+  <styled.div>
+    <h2>
+      Some title
+    </h2>
+    <p>
+      some description
+    </p>
+  </styled.div>
+  <styled.div>
+    <Icon
+      name="ri-arrow-right-s-line"
+      size={30}
+    />
+  </styled.div>
+</styled.div>
+`;

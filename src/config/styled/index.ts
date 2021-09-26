@@ -8,7 +8,7 @@ const defaultTheme: DefaultTheme = {
     emphasis: '#EC5757',
   },
   spacing: {
-    gutter: 16,
+    gutter: '16px',
   },
   breakpoints: {
     xs: '0px',

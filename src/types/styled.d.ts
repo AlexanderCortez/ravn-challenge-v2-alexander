@@ -17,7 +17,7 @@ declare module 'styled-components' {
       emphasis: string;
     };
     spacing: {
-      gutter: number;
+      gutter: string;
     };
     breakpoints: { [key in BreakpointKeys]: string };
   }
