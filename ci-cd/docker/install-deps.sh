@@ -14,3 +14,5 @@ else
   npm run build
 fi
 
+echo "REACT_APP_GRAPHQL_SERVER=$REACT_APP_GRAPHQL_SERVER" >> .env;
+
