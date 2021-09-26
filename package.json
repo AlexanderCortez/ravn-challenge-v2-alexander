@@ -3,13 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.24",
-    "@types/node": "^12.20.27",
-    "@types/react": "^17.0.24",
-    "@types/react-dom": "^17.0.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -19,8 +12,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "jest --detectOpenHandles --verbose",
+    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +32,31 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "@types/enzyme": "^3.10.9",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^12.20.27",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "prettier": "^2.4.1",
+    "ts-jest": "^26.4.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
   }
 }
