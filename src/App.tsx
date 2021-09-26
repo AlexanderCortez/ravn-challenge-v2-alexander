@@ -1,10 +1,10 @@
+import Layout from 'components/Layout';
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
 
 const App = (): React.ReactElement => {
   return (
-    <div className="App">
+    <Layout>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -19,7 +19,7 @@ const App = (): React.ReactElement => {
           Learn React
         </a>
       </header>
-    </div>
+    </Layout>
   );
 };
 
