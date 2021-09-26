@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Indicator component should match snapshot 1`] = `
+<styled.div
+  className="indicator-container"
+>
+  <styled.div>
+    <img
+      alt="loading"
+      src={
+        Object {
+          "canInstrument": true,
+          "createTransformer": [Function],
+          "getCacheKey": [Function],
+          "process": [Function],
+        }
+      }
+    />
+    <h2>
+      loading
+    </h2>
+  </styled.div>
+</styled.div>
+`;

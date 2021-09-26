@@ -1,0 +1,28 @@
+{
+  "moduleDirectories": ["node_modules", "<rootDir>/src"],
+  "rootDir": ".",
+  "transform": {
+    "^.+\\.js$": "babel-jest",
+    "^.+\\.jsx$": "babel-jest",
+    "^.+\\.(ts|tsx)$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "^.+\\.(css|less|scss)$": "babel-jest",
+    "\\.(jpg|jpeg|png|svg)$": "babel-jest"
+  },
+  "coverageDirectory": "<rootDir>/coverage",
+  "collectCoverageFrom": ["<rootDir>/**/*.{js,jsx,ts,tsx}"],
+  "testPathIgnorePatterns": ["node_modules", "\\.cache", "<rootDir>.*/public"],
+  "modulePathIgnorePatterns": [
+    "<rootDir>/build",
+    "<rootDir>/coverage",
+    "<rootDir>/src/reportWebVitals.ts",
+    "<rootDir>/src/react-app-env.d.ts",
+    "<rootDir>/src/index.ts"
+  ],
+  "snapshotResolver": "<rootDir>/src/__tests__/snapshotResolver.js",
+  "snapshotSerializers": ["enzyme-to-json/serializer"],
+  "setupFilesAfterEnv": ["<rootDir>/src/__tests__/setupTests.ts"],
+  "testMatch": ["**/?(*.)+(spec|test).ts(x)"],
+  "transformIgnorePatterns": ["/node_modules/(?!(tiny-slider)).+\\.js$"]
+}
