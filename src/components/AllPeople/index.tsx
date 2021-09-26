@@ -14,8 +14,18 @@ import Descriptions from 'components/Descriptions';
 import { useBreakpoint } from 'styled-breakpoints/react-styled';
 import { up } from 'styled-breakpoints';
 import AppHeader from 'components/AppHeader';
+import { ApolloError, useReactiveVar } from '@apollo/client';
+import { allPeopleStatus } from 'apollo/reactiveVars/people';
+import { Person } from 'apollo/generated/graphql';
 
-const AllPeople = (): JSX.Element => {
+type Props = {
+  error?: ApolloError;
+  loading: boolean;
+};
+
+const AllPeople = ({ loading, error }: Props): JSX.Element => {
+  const { people } = useReactiveVar(allPeopleStatus);
+  const [currentPerson, setCurrentPerson] = useState<Person>();
   const isDesktop = useBreakpoint(up('md'));
   const sliderRef = useRef(null);
   const [sliderInstance, setSliderInstance] =
@@ -46,9 +56,13 @@ const AllPeople = (): JSX.Element => {
     if (isDesktop === true) {
       sliderInstance?.goTo(0);
     }
-  }, [isDesktop, sliderInstance]);
+    if (isDesktop === false && currentPerson) {
+      sliderInstance?.goTo(1);
+    }
+  }, [isDesktop, sliderInstance, currentPerson]);
 
-  const onPersonClick = (): void => {
+  const onPersonClick = (person: Person): void => {
+    setCurrentPerson(person);
     if (!isDesktop) {
       sliderInstance?.goTo('next');
     }
@@ -56,55 +70,75 @@ const AllPeople = (): JSX.Element => {
 
   const onBack = (): void => {
     sliderInstance?.goTo('prev');
+    setCurrentPerson(undefined);
   };
 
   return (
     <>
       <AppHeader
         extra={
-          <BackButton onClick={onBack}>
-            <Icon name="ri-arrow-left-line" size={25} />
-          </BackButton>
+          currentPerson && (
+            <BackButton onClick={onBack}>
+              <Icon name="ri-arrow-left-line" size={25} />
+            </BackButton>
+          )
         }
         title="Ravn Star Wars Registry"
       />
       <Container>
         <SliderWrapper ref={sliderRef}>
           <ListWrapper>
-            <Card
-              heading="Luke Skywalker"
-              blurb="Human from Tatooine"
-              extra={<Icon name="ri-arrow-right-s-line" size={30} />}
-            />
-            <Card
-              heading="C-3PO"
-              blurb="Droid from Tatooine"
-              extra={<Icon name="ri-arrow-right-s-line" size={30} />}
-            />
-            <Card
-              heading="R2-D2"
-              blurb="Droid from Naboo"
-              extra={<Icon name="ri-arrow-right-s-line" size={30} />}
-              onClick={onPersonClick}
-            />
-            <Indicator loading tip="Loading" />
+            {people.map((person) => (
+              <Card
+                isCurrent={person.id === currentPerson?.id}
+                key={person.id}
+                heading={person.name!}
+                blurb={`${person?.species?.name || 'Human'} from ${
+                  person.homeworld?.name
+                }`}
+                extra={<Icon name="ri-arrow-right-s-line" size={30} />}
+                onClick={(): void => onPersonClick(person)}
+              />
+            ))}
+            {loading && !error && <Indicator loading tip="Loading" />}
+            {error && !loading && <Indicator error="Failed to Load Data" />}
           </ListWrapper>
           <DetailsWrapper>
-            <Descriptions title="General Information">
-              <Descriptions.Item label="Eye Color">Blue</Descriptions.Item>
-              <Descriptions.Item label="Hair Color">Blond</Descriptions.Item>
-              <Descriptions.Item label="Skin Color">Fair</Descriptions.Item>
-              <Descriptions.Item label="Birth Year">19BBY</Descriptions.Item>
-            </Descriptions>
-            <Descriptions title="Vehicles">
-              <Descriptions.Item label="Snowspeeder" />
-              <Descriptions.Item label="Imperial Speeder Bike" />
-            </Descriptions>
+            {currentPerson && (
+              <>
+                <Descriptions title="General Information">
+                  <Descriptions.Item label="Eye Color">
+                    {currentPerson?.eyeColor}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Hair Color">
+                    {currentPerson?.hairColor}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Skin Color">
+                    {currentPerson?.skinColor}
+                  </Descriptions.Item>
+                  <Descriptions.Item label="Birth Year">
+                    {currentPerson?.birthYear}
+                  </Descriptions.Item>
+                </Descriptions>
+                <Descriptions title="Vehicles">
+                  {currentPerson.vehicleConnection?.vehicles?.map((vehicle) => (
+                    <Descriptions.Item
+                      key={vehicle?.id}
+                      label={vehicle?.name || ''}
+                    />
+                  ))}
+                </Descriptions>
+              </>
+            )}
           </DetailsWrapper>
         </SliderWrapper>
       </Container>
     </>
   );
+};
+
+AllPeople.defaultProps = {
+  error: undefined,
 };
 
 export default AllPeople;

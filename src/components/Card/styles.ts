@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ isCurrent?: boolean }>`
   display: flex;
   justify-content: space-between;
   padding: ${({ theme }): string => `${theme.spacing.gutter} 0`};
@@ -11,6 +11,9 @@ export const Container = styled.div`
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
+  background-color: ${({ isCurrent }): string =>
+    isCurrent ? 'rgba(0, 0, 0, 0.1)' : 'inherit'};
+
   &:after {
     content: '';
     position: absolute;

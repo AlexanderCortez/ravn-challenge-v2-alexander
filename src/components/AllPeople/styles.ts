@@ -20,6 +20,7 @@ export const ListWrapper = styled.div`
   width: 100%;
   flex-direction: column;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   overflow-y: auto;
 
   ${up('md')} {
@@ -50,6 +51,7 @@ export const BackButton = styled.button`
   outline: none !important;
   box-shadow: none;
   appearance: none;
+  cursor: pointer;
 
   i {
     color: ${({ theme }): string => theme.palette.white};
