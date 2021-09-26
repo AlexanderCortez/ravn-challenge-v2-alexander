@@ -2,6 +2,7 @@ import { DefaultTheme } from 'styled-components';
 
 const defaultTheme: DefaultTheme = {
   palette: {
+    white: '#ffffff',
     black: '#121212',
     dark: '#333333',
     light: '#828282',

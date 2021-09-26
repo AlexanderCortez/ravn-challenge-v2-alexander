@@ -8,10 +8,10 @@ import {
 
 const Card = ({ heading, blurb, extra }: CardProps): React.ReactElement => {
   return (
-    <Container>
+    <Container className="card-container">
       <HeadingWrapper>
-        <h2>{heading}</h2>
-        <p>{blurb}</p>
+        <h2 className="card-container__heading">{heading}</h2>
+        <p className="card-container__blurb">{blurb}</p>
       </HeadingWrapper>
       <ExtraWrapper>{extra}</ExtraWrapper>
     </Container>

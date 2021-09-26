@@ -11,10 +11,10 @@ export const Container = styled.div`
 export const HeadingWrapper = styled.div`
   padding: ${({ theme }): string => `0 ${theme.spacing.gutter}`};
   width: 100%;
-  p {
+  .card-container__blurb {
     color: ${({ theme }): string => theme.palette.light};
   }
-  h2 {
+  .card-container__heading {
     color: ${({ theme }): string => theme.palette.dark};
   }
 `;

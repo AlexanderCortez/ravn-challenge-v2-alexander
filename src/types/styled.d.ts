@@ -11,6 +11,7 @@ enum BreakpointKeys {
 declare module 'styled-components' {
   export interface DefaultTheme {
     palette: {
+      white: string;
       black: string;
       dark: string;
       light: string;

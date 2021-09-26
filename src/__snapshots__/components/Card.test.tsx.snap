@@ -1,12 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card component should match snapshot 1`] = `
-<styled.div>
+<styled.div
+  className="card-container"
+>
   <styled.div>
-    <h2>
+    <h2
+      className="card-container__heading"
+    >
       Some title
     </h2>
-    <p>
+    <p
+      className="card-container__blurb"
+    >
       some description
     </p>
   </styled.div>
