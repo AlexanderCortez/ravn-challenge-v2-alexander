@@ -16,6 +16,6 @@ WORKDIR ${APP_DIR}
 
 COPY . .
 
-RUN ci-cd/docker/install-deps.sh
+RUN chmod -R 777 ./ci-cd && ci-cd/docker/install-deps.sh
 
 CMD [ "npm", "run", "start:prod" ]

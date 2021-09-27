@@ -13,4 +13,3 @@ else
   npm cache clean --force
   npm run build
 fi
-
