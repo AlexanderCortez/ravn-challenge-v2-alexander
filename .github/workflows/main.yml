@@ -20,7 +20,10 @@ jobs:
           REACT_APP_GRAPHQL_SERVER: ${{ secrets.REACT_APP_GRAPHQL_SERVER }}
           NODE_ENV: ${{ secrets.NODE_ENV }}
           APP_ENV: ${{ secrets.APP_ENV }}
-        run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web
+        run: |
+          export REACT_APP_GRAPHQL_SERVER=$REACT_APP_GRAPHQL_SERVER
+          echo "REACT_APP_GRAPHQL_SERVER=$REACT_APP_GRAPHQL_SERVER" >> .env
+          heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web
       - name: Release
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}

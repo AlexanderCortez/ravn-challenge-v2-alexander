@@ -13,6 +13,3 @@ else
   npm cache clean --force
   npm run build
 fi
-
-echo "REACT_APP_GRAPHQL_SERVER=$REACT_APP_GRAPHQL_SERVER" >> .env;
-
